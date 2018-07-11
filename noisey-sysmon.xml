@@ -1,0 +1,63 @@
+<Sysmon schemaversion="4.1">
+    <HashAlgorithms>*</HashAlgorithms>
+    <EventFiltering>
+        <ProcessCreate onmatch="include">
+            <Image name="SYSMON EVENT ID 1 : PROCESS CREATION [ProcessCreate] Rule" condition="begin with"></Image>
+        </ProcessCreate>
+		
+        <FileCreateTime onmatch="include">
+            <Image name="SYSMON EVENT ID 2 : FILE CREATION TIME RETROACTIVELY CHANGED IN THE FILESYSTEM [FileCreateTime] Rule" condition="begin with"></Image>
+        </FileCreateTime>
+        
+        <NetworkConnect onmatch="include">
+            <Image name="SYSMON EVENT ID 3 : NETWORK CONNECTION INITIATED [NetworkConnect] Rule" condition="begin with"></Image>
+        </NetworkConnect>    
+        
+        <ProcessTerminate onmatch="include">
+            <Image name="SYSMON EVENT ID 5 : PROCESS ENDED [ProcessTerminate] Rule" condition="begin with"></Image>
+        </ProcessTerminate>
+        
+        <DriverLoad onmatch="include">
+            <Signature name="SYSMON EVENT ID 6 : DRIVER LOADED INTO KERNEL [DriverLoad] Rule" condition="begin with"></Signature> 
+        </DriverLoad>
+        
+        <ImageLoad onmatch="include">
+            <Image name="SYSMON EVENT ID 7 : DLL (IMAGE) LOADED BY PROCESS [ImageLoad] Rule" condition="begin with"></Image>
+        </ImageLoad>
+        
+        <CreateRemoteThread onmatch="include">
+            <SourceImage name="SYSMON EVENT ID 8 : REMOTE THREAD CREATED [CreateRemoteThread] Rule" condition="begin with"></SourceImage>
+            <TargetImage name="SYSMON EVENT ID 8 : REMOTE THREAD CREATED [CreateRemoteThread] Rule" condition="begin with"></TargetImage>
+        </CreateRemoteThread>
+        
+        <RawAccessRead onmatch="include">
+            <Image name="SYSMON EVENT ID 9 : RAW DISK ACCESS [RawAccessRead]Rule" condition="begin with"></Image>
+        </RawAccessRead>
+        
+        <ProcessAccess onmatch="include">
+            <SourceImage name="SYSMON EVENT ID 10 : INTER-PROCESS ACCESS [ProcessAccess] Rule" condition="begin with"></SourceImage>
+            <TargetImage name="SYSMON EVENT ID 10 : INTER-PROCESS ACCESS [ProcessAccess] Rule" condition="begin with"></TargetImage>
+        </ProcessAccess>
+        
+        <FileCreate onmatch="include">
+            <TargetFilename name="SYSMON EVENT ID 11 : FILE CREATED [FileCreate] Rule" condition="begin with"></TargetFilename>
+        </FileCreate>
+
+        <RegistryEvent onmatch="include">
+            <TargetObject name="SYSMON EVENT ID 12 13 14 : REGISTRY MODIFICATION [RegistryEvent] Rule" condition="begin with"></TargetObject>
+        </RegistryEvent>
+        
+        <FileCreateStreamHash onmatch="include">
+            <TargetFilename name="SYSMON EVENT ID 15 : ALTERNATE DATA STREAM CREATED [FileCreateStreamHash] Rule" condition="begin with"></TargetFilename> 
+        </FileCreateStreamHash>
+
+        <PipeEvent onmatch="include">
+            <Image name="SYSMON EVENT ID 17 18 : PIPE CREATED / PIPE CONNECTED [PipeEvent] Rule" condition="begin with"></Image>
+        </PipeEvent>
+
+        <WmiEvent onmatch="include">
+            <Operation name="SYSMON EVENT ID 19 20 21 : WMI EVENT MONITORING [WmiEvent] Rule" condition="begin with"></Operation>
+    	</WmiEvent>
+        
+  </EventFiltering>
+</Sysmon>
